@@ -1,0 +1,28 @@
+Index: skaffold.yaml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- skaffold.yaml	(date 1609849078826)
++++ skaffold.yaml	(date 1609849078826)
+@@ -1,14 +1,12 @@
+ apiVersion: skaffold/v2beta7
+ kind: Config
+-metadata:
+-  name: kubernetes
+ build:
+   artifacts:
+   - image: java-hello-world
+-    context: .
+-    docker: {}
+ deploy:
+-  kubectl:
+-    manifests:
+-    - kubernetes-manifests/hello.deployment.yaml
+-    - kubernetes-manifests/hello.service.yaml
++  helm:
++    releases:
++      - name: java-hello-world
++        chartPath: java-hello-world
++        artifactOverrides:
++          image: java-hello-world

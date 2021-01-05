@@ -1,0 +1,12 @@
+apiVersion: skaffold/v2beta7
+kind: Config
+build:
+  artifacts:
+  - image: java-hello-world
+deploy:
+  helm:
+    releases:
+      - name: java-hello-world
+        chartPath: java-hello-world
+        artifactOverrides:
+          image: java-hello-world
